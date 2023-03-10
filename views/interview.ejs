@@ -1,0 +1,21 @@
+<div>
+    <h1> Interview Main Page </h1>
+
+    <section id="create-interview">
+        <form class= "new-interview-form" action="/interview/create" id="new-interview-form"  method="POST">
+                <input type="text" class="company-name-input" name="company_name" placeholder="Enter Company Name" required="true"></input>
+                <input type="date" class="interview-date" name="date" placeholder="Enter date" required="true"></input>
+                <select name="student" id="cars">
+                    <% for(student of students) {%>
+                        <option value="<%=student.id%>"> <%=student.name%> </option>
+                    <%}%>
+                </select>
+                
+                <input type="submit" value="Post">
+        </form>
+        <% for(interview of interviews) {%>
+             <a href="interview_detail/interview_detail/?id=<%=interview.id%>"> <%=interview.company_name%></a></div>
+        <%}%>
+
+    </section>
+</div>

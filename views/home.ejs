@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title> Home Page</title>
+    </head>
+    <section id="feed-questions">
+        <form class= "new-student-form" action="/students/create" id="new-student-form"  method="POST">
+                <input type="text" class="name-input" name="name" placeholder="Enter Name" required="true"></input>
+                <input type="text" class="batch-input" name="batch" placeholder="Enter Batch" required="true"></input>
+                <input type="text" class="college-input" name="college" placeholder="College" required="true"></input>
+                <input type="text" class="dsa-input" name="dsa" placeholder="dsa Marks" required="true"></input>
+                <input type="text" class="webd-input" name="webd" placeholder="Web-d Marks" required="true"></input>
+                <input type="text" class="react-input" name="react" placeholder="React Marks" required="true"></input>
+                <input type="submit" value="Post">
+        </form>
+    </section>
+    <a href="/interview">GO to interview</a>
+    <section>
+        <select name="cars" id="cars">
+        <% for(student of students) {%>
+            <option value="<%=student.name%>"> <%=student.name%> </option>
+        <%}%>
+        </select>
+    </section>
+
+
+</html>
