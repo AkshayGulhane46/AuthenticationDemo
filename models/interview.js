@@ -9,10 +9,14 @@ const interviewSchema = new mongoose.Schema({
         type:Date,
         required:true
     },
-    student:{
-        type : mongoose.Schema.Types.ObjectId,
-        ref:'Student'
-    },
+    students:
+    [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref:'Student'
+        }
+    ]
+    ,
     placed:{
         type:Boolean,
         required:false

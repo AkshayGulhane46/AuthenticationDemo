@@ -8,5 +8,6 @@ router.get('/',homeController.home);
 router.use('/students', require('./students'));
 router.use('/interview', require('./interview'));
 router.use('/interview_detail/:id',require('./interview_details'));
+router.use('/interview_detail/add_student',require('./interview_details'))
 module.exports = router;
 

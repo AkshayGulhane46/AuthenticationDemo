@@ -3,9 +3,21 @@
     <h3><%=company_name%></h3>
     <h2>Add Students to interivies </h2>
 
-    <section>
-       <% for(student in students) { %>
+    <!-- <section>
+       <% for(student of student_detail) { %>
             <%=student.name%>
+            <%=student._id%>
         <% } %>
+    </section> -->
+
+    <section id="add-students">
+        <form class= "new-student-form" action="/interview_detail/add_student" id="Add_student"  method="POST">
+            <select>
+                <% for(student of student_detail) { %>    
+                    <option value="<%= student.id%>"><%= student.name%></option>
+                    <% } %>
+                </select>
+                <input type="submit" value="Add Student to interview">
+        </form>
     </section>
 </div>

@@ -15,11 +15,28 @@
     </section>
     <a href="/interview">GO to interview</a>
     <section>
-        <select name="cars" id="cars">
-        <% for(student of students) {%>
-            <option value="<%=student.name%>"> <%=student.name%> </option>
-        <%}%>
-        </select>
+        <table>
+            <tr>
+              <th>name</th>
+              <th>batch</th>
+              <th>College</th>
+              <th>DSA MARKS</th>
+              <th>WEB-D MARKS</th>
+              <th>REACT MARKS</th>
+            </tr>
+            <% for(student of students) {%>
+            <tr> 
+                <td> <%=student.name%> </td>
+                <td> <%=student.batch%></td>
+                <td> <%=student.college%></td>
+                <td> <%=student.dsa%></td>
+                <td> <%=student.webd%></td>
+                <td> <%=student.react%></td>
+             </tr>>
+             
+           
+        <%}%>  
+    
     </section>
 
 
