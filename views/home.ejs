@@ -10,6 +10,7 @@
                 <input type="text" class="dsa-input" name="dsa" placeholder="dsa Marks" required="true"></input>
                 <input type="text" class="webd-input" name="webd" placeholder="Web-d Marks" required="true"></input>
                 <input type="text" class="react-input" name="react" placeholder="React Marks" required="true"></input>
+
                 <input type="submit" value="Post">
         </form>
     </section>
@@ -23,6 +24,7 @@
               <th>DSA MARKS</th>
               <th>WEB-D MARKS</th>
               <th>REACT MARKS</th>
+              <th>Interviews</th>
             </tr>
             <% for(student of students) {%>
             <tr> 
@@ -32,6 +34,9 @@
                 <td> <%=student.dsa%></td>
                 <td> <%=student.webd%></td>
                 <td> <%=student.react%></td>
+                <td>
+                    <%=student.interviews%>
+                </td>
              </tr>>
              
            
