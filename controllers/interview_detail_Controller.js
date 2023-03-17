@@ -11,7 +11,7 @@ module.exports.interview_detail = async function(req, res){
     let studentss = await Interview.find({}).populate('students')
     let studentsss = studentss.students;
 
-    console.log(studentsss);
+    console.log(students);
 
 
    // console.log(interview_students);
