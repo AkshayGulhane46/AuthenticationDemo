@@ -7,4 +7,6 @@ const interview_detail_controller = require('../controllers/interview_detail_Con
 router.get('/',interview_detail_controller.interview_detail);
 //router.post('/create',interviewController.create);
 
+
+
 module.exports = router;

@@ -27,12 +27,14 @@ module.exports.create = function(req,res){
 
 
 module.exports.addStudent = async function(req,res){
-    console.log("inside contrommer")
+    console.log("inside Add Student Controller")
     console.log("Student id is==" ,  req.body.studentList);
     console.log("company id is==" , req.query.compname);
+
     let interview = await Interview.findById(req.query.compname);
+    let student = await Student.findById(req.body.studentList);
     console.log(interview._id);
-    interview.students.push(req.body.studentList);
+    interview.students.push(student);
     interview.save();
   
 

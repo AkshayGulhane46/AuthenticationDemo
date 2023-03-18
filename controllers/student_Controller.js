@@ -18,3 +18,8 @@ module.exports.create = function(req,res){
     })
 }
 
+
+module.exports.placed = async function(req,res){
+    console.log("inside placed");
+    res.redirect('back');
+}
