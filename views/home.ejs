@@ -15,6 +15,7 @@
         </form>
     </section>
     <a href="/interview">GO to interview</a>
+    <a href="/exporttocsv">Export to CSV </a>
     <section>
         <table>
             <tr>
@@ -24,7 +25,9 @@
               <th>DSA MARKS</th>
               <th>WEB-D MARKS</th>
               <th>REACT MARKS</th>
-              <th>Interviews</th>
+              
+              <th>Companies</th>
+              <th>Placed</th>
             </tr>
             <% for(student of students) {%>
             <tr> 
@@ -34,9 +37,18 @@
                 <td> <%=student.dsa%></td>
                 <td> <%=student.webd%></td>
                 <td> <%=student.react%></td>
+           
                 <td>
-                    <%=student.interviews%>
+                    <%=student.companies%>
                 </td>
+                <td> 
+                    <% if (student.placed) { %>
+                       <td> Placed </td>
+                    <% }else{ %>
+                        <td>Not Placed </td>
+                    <% } %>    
+                </td>
+               
              </tr>>
              
            

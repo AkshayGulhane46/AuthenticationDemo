@@ -34,12 +34,25 @@ module.exports.addStudent = async function(req,res){
     let interview = await Interview.findById(req.query.compname);
     let student = await Student.findById(req.body.studentList);
     console.log(interview._id);
-    interview.students.push(student);
-    interview.save();
-  
+
+    console.log(interview.students.length);
+    console.log(interview.students.indexOf(student._id));
+
+    if(interview.students.includes(student._id)){
+        console.log("Student Alrady Exists in interview");
+    
+        return res.redirect('back');
+    }else{
+        interview.students.push(student);
+        interview.save();
+    }
 
     let studentUpdate = await Student.findById(req.body.studentList);
+    let company_name = interview.company_name;
+    console.log("student is added to company", company_name);
+    studentUpdate.companies.push(company_name);
     studentUpdate.interviews.push(req.query.compname);
+
     studentUpdate.save();
 
     res.redirect('back');
