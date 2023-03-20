@@ -1,6 +1,7 @@
 const Interview = require('../models/interview');
 const path = require('path');
 const Student = require('../models/student');
+const ans = 1;
 
 module.exports.interview = async function(req, res){
     let students = await Student.find({})
