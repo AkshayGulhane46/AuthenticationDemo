@@ -14,6 +14,7 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(expressLayouts);
 
+
 // use express router
 app.use('/', require('./routes'));
 

@@ -1,17 +1,27 @@
 const Interview = require('../models/interview');
 const path = require('path');
 const Student = require('../models/student');
+const User = require('../models/user');
 const ans = 1;
 
 module.exports.interview = async function(req, res){
-    let students = await Student.find({})
-    let interviews = await Interview.find({})
 
-    return res.render('interview',{
-        students:students,
-        interviews:interviews
-    });
-}
+    if(req.cookies.user_id){
+        User.findById(req.cookies.user_id).
+        then(async function(user){
+            let students = await Student.find({})
+            let interviews = await Interview.find({})
+        
+            return res.render('interview',{
+                students:students,
+                interviews:interviews
+            });
+        })
+    }else{
+        res.redirect('/users/sign-in');
+    }
+}    
+
   
 module.exports.create = function(req,res){
     const newInterview = new Interview({
