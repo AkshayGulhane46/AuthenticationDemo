@@ -1,52 +1,73 @@
 <html>
     <head>
-        <title> Home Page</title>
+        <title><%=title%></title>
+        <link rel="stylesheet" href="/css/home.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
+    
 
-    <a href="users/destroy-session">log out </a>
-    <section id="feed-questions">
-        <form class= "new-student-form" action="/students/create" id="new-student-form"  method="POST">
-                <input type="text" class="name-input" name="name" placeholder="Enter Name" required="true"></input>
-                <input type="text" class="batch-input" name="batch" placeholder="Enter Batch" required="true"></input>
-                <input type="text" class="college-input" name="college" placeholder="College" required="true"></input>
-                <input type="text" class="dsa-input" name="dsa" placeholder="dsa Marks" required="true"></input>
-                <input type="text" class="webd-input" name="webd" placeholder="Web-d Marks" required="true"></input>
-                <input type="text" class="react-input" name="react" placeholder="React Marks" required="true"></input>
-
-                <input type="submit" value="Post">
-        </form>
-    </section>
-    <a href="/interview">GO to interview</a>
-    <a href="/exporttocsv">Export to CSV </a>
+    <div id="action-btns">
+        <button id="interview-btn"><a href="/interview">GO to interview</a> </button>
+        <button id="toggle">Hide New Student Form</button>
+        <button id="to-csv-button" type="button" onclick="tableToCSV()" >download CSV</button>
+        <div id="logout">
+            <p> Hello <%= user.name %></p>
+            <button id="logout-btn" ><a href="users/destroy-session">log out</a> </button>
+        </div>
+       
+    </div>
     <section>
+        
+        <form class= "new-student-form" action="/students/create" id="new-student-form"  method="POST">
+            <p>Add a new student</p>    
+            <div id="student">
+                    <input id="form-inputs-values" type="text" class="name-input" name="name" placeholder="Enter Name" required="true"></input>
+                    <input id="form-inputs-values" type="text" class="batch-input" name="batch" placeholder="Enter Batch" required="true"></input>
+                    <input id="form-inputs-values" type="text" class="college-input" name="college" placeholder="College" required="true"></input>    
+                </div>
+                <div id="marks">
+                    <input id="form-inputs-values" type="text" class="dsa-input" name="dsa" placeholder="dsa Marks" required="true"></input>
+                    <input id="form-inputs-values" type="text" class="webd-input" name="webd" placeholder="Web-d Marks" required="true"></input>
+                    <input id="form-inputs-values" type="text" class="react-input" name="react" placeholder="React Marks" required="true"></input>
+                </div>
+                <div id="marks">
+                <input id="form-submit-btn" type="submit" value="Create New Student">
+                </div>
+
+  </form>
+    <section>
+    <div id="student-table">
         <table>
             
-            <tr>
-              <th>name</th>
-              <th>batch</th>
-              <th>College</th>
-              <th>DSA MARKS</th>
-              <th>WEB-D MARKS</th>
-              <th>REACT MARKS</th>
-              <th>Companies</th>
-              <th>Placed</th>
+            <tr id="table-head">
+              <th id="table-head-col-names">name</th>
+              <th id="table-head-col-names">batch</th>
+              <th id="table-head-col-names">College</th>
+              <th id="table-head-col-names">DSA MARKS</th>
+              <th id="table-head-col-names">WEB-D MARKS</th>
+              <th id="table-head-col-names">REACT MARKS</th>
+              <th id="table-head-col-names">Companies</th>
+              <th id="table-head-col-names">-</th>
+              <th id="table-head-col-names">Placement Status</th>
             </tr>
             <% for(student of students) {%>
             <tr> 
-                <td> <%=student.name%> </td>
-                <td> <%=student.batch%></td>
-                <td> <%=student.college%></td>
-                <td> <%=student.dsa%></td>
-                <td> <%=student.webd%></td>
-                <td> <%=student.react%></td>
-                <td><%=student.companies%></td>
-                <td> <% if (student.placed) { %><td> Placed </td><% }else{ %><td>Not Placed </td><% } %></td>
-               
+                <td id="table-head-col-names"> <%=student.name%> </td>
+                <td id="table-head-col-names"> <%=student.batch%></td>
+                <td id="table-head-col-names"> <%=student.college%></td>
+                <td id="table-head-col-names"> <%=student.dsa%></td>
+                <td id="table-head-col-names"> <%=student.webd%></td>
+                <td id="table-head-col-names"> <%=student.react%></td>
+                <td id="table-head-col-names"><%=student.companies%></td>
+                <td id="table-head-col-names"> <% if (student.placed) { %><td id="table-head-col-names"> Placed </td><% }else{ %><td id="table-head-col-names">Not Placed </td><% } %>
              </tr>
-             
-           
-        <%}%>  
-        <button type="button" onclick="tableToCSV()" >download CSV</button>
+        <%}%>
+    </table>      
+    </div>    
+      
          
     <script type="text/javascript">
         function tableToCSV() {
@@ -93,9 +114,10 @@
             // Create to temporary link to initiate
             // download process
             var temp_link = document.createElement('a');
- 
+            const timestamp = Date.now();
+            const fileName = "placement-repot" + timestamp;
             // Download csv file
-            temp_link.download = "GfG.csv";
+            temp_link.download = fileName + ".csv" ;
             var url = window.URL.createObjectURL(CSVFile);
             temp_link.href = url;
  
@@ -109,11 +131,23 @@
             document.body.removeChild(temp_link);
         }
 
-        
+
     </script>
     
-    </section>
 
-   
+    </section>
+    <script>
+        const targetDiv = document.getElementById("new-student-form");
+        const btn = document.getElementById("toggle");
+        btn.onclick = function () {
+        if (targetDiv.style.display !== "none") {
+            targetDiv.style.display = "none";
+            btn.innerHTML = "Show New Student Form"
+        } else {
+            targetDiv.style.display= "flex";
+            btn.innerHTML = "Hide New Student Form"
+        }
+        };
+    </script>
 
 </html>

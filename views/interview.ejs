@@ -1,21 +1,29 @@
-<link rel="stylesheet"  href="/css/interview.css">
-<div>
+
+<head>
+<link rel="stylesheet" href="/css/interview.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<title><%=title%></title>
+</head>
+<div id="main">
     <h1> Interview Main Page </h1>
 
     <section id="create-interview">
+        <div id="interview-form"> 
         <form class= "new-interview-form" action="/interview/create" id="new-interview-form"  method="POST">
-                <input type="text" class="company-name-input" name="company_name" placeholder="Enter Company Name" required="true"></input>
-                <input type="date" class="interview-date" name="date" placeholder="Enter date" required="true"></input>
-                <select name="student" id="cars">
-                    <% for(student of students) {%>
-                        <option value="<%=student.id%>"> <%=student.name%> </option>
-                    <%}%>
-                </select>
-                
-                <input type="submit" value="Post">
+                <label id="field-labels"> Company Name </label>
+                <input id= "form-inputs" type="text" class="company-name-input" name="company_name" placeholder="" required="true"></input>
+                <label id="field-labels"> Date </label>
+                <input id= "form-inputs" type="date" class="interview-date" name="date" placeholder="Enter date" required="true"></input>
+                <input id="form-submit-btn" type="submit" value="Create a new Interview">
         </form>
+    </div>    
+        <h1>List of Previous Interviews</h1>
+
         <% for(interview of interviews) {%>
-             <a href="interview_detail/interview_detail/?id=<%=interview.id%>"> <%=interview.company_name%></a></div>
+          <button id="company-btn"><a href="interview_detail/interview_detail/?id=<%=interview.id%>"> <%=interview.company_name%></a> </button>  
         <%}%>
 
     </section>

@@ -8,13 +8,13 @@ module.exports.profile = function(req,res){
 
 module.exports.signUp = function(req,res){
      return res.render('user_sign_up',{
-       // title:"Sign up page"
+       title:"Sign up page"
     })
 }
 
 module.exports.signIn = function(req,res){
      return res.render('user_sign_in',{
-       // title:"Sign in page"
+        title:'Sign in',
     })
 }
 
@@ -31,6 +31,7 @@ module.exports.create = async function (req,res){
         }
         else{
             console.log("already user is present ")
+            alert("already user is present")
             return res.redirect('back');
 
         }

@@ -22,7 +22,6 @@ module.exports.create = function(req,res){
 module.exports.placed = async function(req,res){
     console.log("inside placed");
     console.log("Studnet who is placed is" , req.query.studentId);
-
     let student = await Student.findById(req.query.studentId);
     student.placed = true;
     student.save();

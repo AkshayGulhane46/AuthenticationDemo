@@ -1,10 +1,23 @@
+<head>
+    <link rel="stylesheet" href="/css/user-sign-up.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title><%=title%></title>
+</head>
+
+
 <h1>
     sign up 
 </h1>
 
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Your password" required>
-    <input type="submit" value="sign up">
+<form id="form-inputs" action="/users/create" method="POST">
+    <label id="field-labels"> Name </label>
+    <input id="form-inputs-values" type="text" name="name" placeholder="enter name" required>
+    <label id="field-labels"> Email </label>
+    <input id="form-inputs-values" type="email" name="email" placeholder="enter E-mail" required>
+    <label id="field-labels"> Password </label>
+    <input id="form-inputs-values" type="password" name="password" placeholder="enter password" required>
+    <input id="new-account-btn"  type="submit" value="Create Account">
 </form>

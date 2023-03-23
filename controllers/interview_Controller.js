@@ -14,7 +14,8 @@ module.exports.interview = async function(req, res){
         
             return res.render('interview',{
                 students:students,
-                interviews:interviews
+                interviews:interviews,
+                title:'Interviews'
             });
         })
     }else{
