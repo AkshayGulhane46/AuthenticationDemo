@@ -8,7 +8,9 @@ const db = require('./config/mongoose');
 app.use(express.static('./assets'));
 const cookieParser = require('cookie-parser');
 const sassMiddleware  = require('node-sass-middleware') ; 
-
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-stratergy');
 
 var bodyParser = require('body-parser');
 app.use(express.urlencoded());
@@ -16,24 +18,28 @@ app.use(cookieParser());
 app.use(expressLayouts);
 
 
-// use express router
-app.use('/', require('./routes'));
-
-
-// app.use(sassMiddleware({ // all the flags under this are from documentation 
-
-//     src: './assets/scss',
-//     dest: './assets/css',
-//     debug : true, // this is added because our code is in staging, when added in prod this flag should be false
-//     outputStyle: 'extended',
-//     prefix:'/css'
-
-// }));
 
 
 // set up the view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+app.use(session({
+    name:'Naukri',
+    secret:"abc",
+    saveUninitialized : false,
+    resave : false,
+    cookie :{
+        maxAge:(1000*60*100)
+         
+    }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// use express router
+app.use('/', require('./routes'));
 
 app.listen(port,function(err){
     if(err){

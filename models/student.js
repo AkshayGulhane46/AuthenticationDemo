@@ -43,7 +43,11 @@ const studentSchema = new mongoose.Schema({
             type:String,
             required : false
         }
-    ]
+    ],
+    student_placed:{
+        type:String,
+        required : false
+    }
 },{
     timestamps:true
 })

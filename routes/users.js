@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 
 const router = express.Router();
 
@@ -13,7 +14,16 @@ router.get('/sign-in',usersController.signIn);
 
 router.post('/create',usersController.create);
 
-router.post('/create-session',usersController.createSession);
+// use passport as middleware to autj
+router.post('/create-session', passport.authenticate(
+    'local',
+        {
+            failureRedirect :'/users/sign-in'
+        },
+     ), 
+     usersController.createSession);
+
+    
 
 router.get('/destroy-session',usersController.destroySession);
 

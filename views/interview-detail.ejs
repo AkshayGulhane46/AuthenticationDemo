@@ -11,6 +11,14 @@
 
 <div id="header">
     <h1> <%=company_name%> Interview Detail Page </h1>
+    <div id="action-btns">
+        <button id="interview-btn"><a href="/">GO to HomePage</a> </button>
+        <button id="interview-btn"><a href="/interview">GO to Interviews</a> </button>
+
+        <div id="logout">
+            <button id="logout-btn" ><a href="users/destroy-session">log out</a> </button>
+        </div>
+    </div>
 </div>    
    
 <div id="student-adder"> 
@@ -37,10 +45,10 @@
                 <th id="table-head-col-names"> <%= s.name%> </th>
                 <th>  
                     
-                        <% if(s.placed == true) { %>
-                            <p> <%=s.name%> is placed in  <%=company_name%>  </p>
+                        <% if(s.placed == true ) {%>
+                            <p> <%=s.name%> is placed in <%=s.student_placed%> </p>
                         <%}else{%>
-                            <form method="post" action="/students/placed/?studentId=<%=s._id%>" class="inline">
+                            <form method="post" action="/students/placed/?studentId=<%=s._id%>&comp_id=<%=company_id%>" class="inline">
                                 <input type="hidden" name="extra_submit_param" value="extra_submit_value">
                                 <button id="form-submit-btn"  type="submit" name="submit_param" value="submit_value" class="link-button">
                                     Mark <%=s.name%> as Placed

@@ -19,57 +19,45 @@ module.exports.signIn = function(req,res){
 }
 
 // get the sign up data
-module.exports.create = async function (req,res){
-    User.findOne({email:req.body.email})
-        .then (function(user){
-        if(!user){
-           User.create(req.body)
-           .catch(function(err){
-            console.log("error in finding a user",err);
-            return res.redirect('/users/sign-in');
-           })
-        }
-        else{
-            console.log("already user is present ")
-            alert("already user is present")
-            return res.redirect('back');
+// module.exports.create = async function(req, res){
 
-        }
-        return res.redirect('/users/sign-in');
-    });
-  
 
+//     User.findOne({email: req.body.email}, function(err, user){
+//         if(err){console.log('error in finding user in signing up'); return}
+
+//         if (!user){
+//             User.create(req.body, function(err, user){
+//                 if(err){console.log('error in creating user while signing up'); return}
+
+//                 return res.redirect('/users/sign-in');
+//             })
+//         }else{
+//             return res.redirect('back');
+//         }
+
+//     });
+// }
+
+
+
+// sign in and create a session for the user
+module.exports.createSession = function(req, res){
+    return res.redirect('/');
 }
-
-// sign in and create a session for user
-module.exports.createSession = async function(req,res){
-
-    // steps to authenticate
-    await User.findOne({email : req.body.email})
-    .then(
-        function(user){
-            if(user){
-                if(user.password != req.body.password){
-                    console.log("password did not match");
-                    return res.redirect('back');
-                }
-                res.cookie('user_id',user.id);
-                console.log("user logged in and cookies are");
-                console.log(res.cookie);
-                return res.redirect('/');
-            }
-            else{
-                res.redirect('back');
-            }
-        }
-    ).catch(function(err){
-        console.log(err);
-    })
-}
-
 // logout
 
 module.exports.destroySession = async function(req,res){
     res.cookie('user_id','');
     res.redirect('/users/sign-in');
 }
+
+
+module.exports.create = async function (req, res) {
+ 
+    let user = await User.findOne({ email: req.body.email });
+    if (!user) {
+      await User.create(req.body);
+      return res.redirect("/users/sign-in");
+    }
+    return res.redirect("back");
+  };
