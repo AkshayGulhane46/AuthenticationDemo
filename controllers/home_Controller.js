@@ -9,8 +9,7 @@ let student = Student.find({});
 module.exports.home = async function(req, res){
                 return res.render('home',{
                     title:'Placement Cell',
-                    students: student,
-                    user : user
+
                     
                 })
 }

@@ -6,13 +6,17 @@ const router = express.Router();
 const usersController = require('../controllers/users_controller');
 
 
-router.get('/profile', usersController.profile);
+router.get('/profile',passport.checkAuthentication , usersController.profile);
 
 router.get('/sign-up', usersController.signUp);
 
 router.get('/sign-in',usersController.signIn);
 
 router.post('/create',usersController.create);
+
+router.post('/update',usersController.update);
+
+router.post()
 
 // use passport as middleware to autj
 router.post('/create-session', passport.authenticate(
@@ -21,9 +25,18 @@ router.post('/create-session', passport.authenticate(
             failureRedirect :'/users/sign-in'
         },
      ), 
-     usersController.createSession);
+     usersController.createSession
+);
 
-    
+router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
+router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/users/sign-in'},usersController.createSession));
+
+
+
+router.get('/auth/google',passport.authenticate('google',{scope:['profile', 'email']}))
+
+router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/users/sign-in'}),usersController.createSession)
+
 
 router.get('/destroy-session',usersController.destroySession);
 

@@ -10,16 +10,23 @@
     
 
     <div id="action-btns">
-        <button id="interview-btn"><a href="/interview">GO to interview</a> </button>
-        <button id="toggle">Hide New Student Form</button>
-        <button id="to-csv-button" type="button" onclick="tableToCSV()" >download CSV</button>
-        <div id="logout">
-        
-            <button id="logout-btn" ><a href="users/destroy-session">log out</a> </button>
-        </div>
+       
+
+        <% if(locals.user) {%>
+       
+            <h1><%= user.name %></h1>
+            <h1><%= user.email %></h1>
+            
+                <button id="logout-btn" > <a href="/users/destroy-session">Sign out </a></button>
+            <%}else{%>
+                <div id="logout">
+                    <button id="logout-btn" > <a href="/users/sign-in">Sign in</a></button>
+                    <button id="logout-btn"> <a href="/users/sign-up">Sign Up</a></button>
+                </div>
+        <%}%>
        
     </div>
-    <section>
-        
 
+            
+    
 </html>

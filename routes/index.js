@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const homeController = require('../controllers/home_Controller');
-const { route } = require('./interview');
-const students = require('../models/student');
+
 
 
 
@@ -17,9 +16,7 @@ const fields = ['._id', 'name', 'batch' ,'college','dsa'];
 console.log('router loaded');
 router.get('/',homeController.home);
 router.use('/users',require('./users'));
-router.use('/students', require('./students'));
-router.use('/interview', require('./interview'));
-router.use('/interview_detail/:id',require('./interview_details'));
+
 
 
 
