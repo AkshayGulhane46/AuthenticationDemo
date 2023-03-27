@@ -6,3 +6,5 @@ This is a sample authentication APP which uses
 3. Passport google Oauth2 Stratergy
 4. NodeJS
 5. HTML and CSS
+
+You need to add your google Authentication passwords here
