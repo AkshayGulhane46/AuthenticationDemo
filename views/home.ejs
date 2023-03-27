@@ -9,13 +9,14 @@
     </head>
     
 
-    <div id="action-btns">
+    <div id="main">
        
-
+        <div id="action-btns-top"> 
         <% if(locals.user) {%>
        
-            <h1><%= user.name %></h1>
-            <h1><%= user.email %></h1>
+            <h1><%= user.name %> </h1>
+     
+            <h1><%= user.email %> </h1>
             
                 <button id="logout-btn" > <a href="/users/destroy-session">Sign out </a></button>
             <%}else{%>
@@ -24,9 +25,47 @@
                     <button id="logout-btn"> <a href="/users/sign-up">Sign Up</a></button>
                 </div>
         <%}%>
+        </div>
        
     </div>
+    <div id="action-btns">
 
-            
+    <% if(locals.user) {%>
+            <a href="/users/destroy-session">Sign out </a>
+            <button id="toggle">Hide Update Form</button>
+            <form id="update-form" action="/users/update/?id=<%=user.id%>" method="POST">
+                <input id="form-inputs-values" type="text" name="name" placeholder ="Your name" value= "<%=user.name %>" required >
+                <input id="form-inputs-values" type="email" name="email" placeholder ="Your name" value= "<%=user.email %>" required >
+                <input id="form-inputs-values" type="password" name="currentpassword" placeholder ="Enter Your Current password" value= "" required >
+                <input id="form-inputs-values" type="password" name="password" placeholder ="Enter new Password" value= "" required >
+                <input name="id" type="hidden" value="<%=user.id %>">
+                <input id = "form-submit-btn" type="submit" value="submit" >
+            </form>
+        <%}else{%>
+            <a href="/users/sign-in"></a>
+            <a href="/users/sign-up"></a>
+    <%}%>
+
+
+
+    </div>
+
+
     
 </html>
+
+<script>
+    const targetDiv = document.getElementById("update-form");
+    const btn = document.getElementById("toggle");
+    btn.onclick = function () {
+    if (targetDiv.style.display !== "none") {
+        targetDiv.style.display = "none";
+        btn.innerHTML = "Show Update Form"
+        btn.style.backgroundColor='Green';
+    } else {
+        targetDiv.style.display= "flex";
+        btn.innerHTML = "Hide Update Form"
+        btn.style.backgroundColor='Red';
+    }
+    };
+</script>    

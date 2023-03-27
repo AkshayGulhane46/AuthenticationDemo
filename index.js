@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 const port = 8080;
 const expressLayouts = require('express-ejs-layouts');
+const customMware = require('./config/middleware');
 const db = require('./config/mongoose');
 app.use(express.static('./assets'));
 const cookieParser = require('cookie-parser');
@@ -13,7 +14,7 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-stratergy');
 const MongoStore = require('connect-mongo')(session);
 const passportGoogle = require('./config/passport-google-oauth2-stratergy');
-
+const flash = require('connect-flash');
 var bodyParser = require('body-parser');
 app.use(express.urlencoded());
 app.use(cookieParser());
@@ -47,6 +48,11 @@ app.use(session({
         console.log(err || 'connect mongo setup ok');
     })
 }));
+
+
+
+app.use(flash()); 
+app.use(customMware.setFlash);
 
 app.use(passport.initialize());
 app.use(passport.session());

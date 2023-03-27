@@ -130,3 +130,30 @@ body{
     margin-top: 10px;
 }
 
+#search-button {
+    display: flex;
+    width: fit-content;
+    height: 50px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #4285F4;
+    border: none;
+        
+  }
+      
+  #search-button svg {
+    width: 25px;
+    height: 25px;
+    filter: invert(1);
+  }
+
+  #create-account-link-google{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding-left: 10px;
+}

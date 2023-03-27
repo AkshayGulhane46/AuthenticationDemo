@@ -1,16 +1,19 @@
-<h1>Prifile</h1>
+<!-- <h1>Prifile</h1>
 
 <h1><%= user.name %></h1>
 <h1><%= user.email %></h1>
 
 <% if(locals.user) {%>
     <%= user.name%>
-        <%=user.id%>
+      
         <a href="/users/destroy-session">Sign out </a>
         <p>hllo</p>
-        <form class="update-form" action="/users/update/?id=<%=user.id%>" method="POST">
+        <button id="toggle">Hide Update Form</button>
+        <form id="update-form" action="/users/update/?id=<%=user.id%>" method="POST">
             <input type="text" name="name" placeholder ="Your name" value= "<%=user.name %>" required >
             <input type="email" name="email" placeholder ="Your name" value= "<%=user.email %>" required >
+            <input type="password" name="password" placeholder ="Enter new Password" value= "" required >
+            <input type="password" name="currentpassword" placeholder ="Enter Your Current password" value= "" required >
             <input name="id" type="hidden" value="<%=user.id %>">
             <input type="submit" value="submit" >
         </form>
@@ -20,3 +23,18 @@
         <a href="/users/sign-in"></a>
         <a href="/users/sign-up"></a>
 <%}%>
+
+
+<script>
+    const targetDiv = document.getElementById("update-form");
+    const btn = document.getElementById("toggle");
+    btn.onclick = function () {
+    if (targetDiv.style.display !== "none") {
+        targetDiv.style.display = "none";
+        btn.innerHTML = "Show Update Form"
+    } else {
+        targetDiv.style.display= "flex";
+        btn.innerHTML = "Hide Update Form"
+    }
+    };
+</script> -->
