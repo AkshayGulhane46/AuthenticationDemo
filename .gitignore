@@ -1,3 +1,2 @@
 node_modules
-config
-passport-google-oauth2-stratergy.js
+environment.js
