@@ -6,12 +6,9 @@ const fs = require('fs');
 const mdq = require('mongo-date-query');
 const path = require('path');
 
-
-
 console.log('router loaded');
-router.get('/',homeController.home);
-router.use('/users',require('./users'));
 
-
+router.get('/', homeController.home);
+router.use('/users', require('./users'));
 module.exports = router;
 

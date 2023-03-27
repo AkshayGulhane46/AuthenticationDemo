@@ -1,36 +1,30 @@
-
 <head>
-    <title><%=title%></title>
-    <link rel="stylesheet" href="/css/signin.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <div id = "sign-in-div">
+  <title>
+    <%=title%>
+  </title>
+  <link rel="stylesheet" href="/css/signin.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <div id="sign-in-div">
 </head>
-    <h1>
-      Welcome, Sign in to your account
-    </h1>
-        <form id="form-inputs" action="/users/create-session" method="POST">
-        <label id="field-labels"> UserName </label>
-        <input id="form-inputs-values" type="email" name="email" placeholder="" required>
-        <label id="field-labels"> Password </label>
-        <input id="form-inputs-values" type="password" name="password" placeholder="" required>
-        <input id="form-submit-btn" type="submit" class="submit" value="Log In">
-        <p id="are-you-new-p">Are you new ?</p>
-        <button  id="new-account-btn"> <a id="create-account-link" href="/users/sign-up">Crete an account</a></button>
-    
+<h1>
+  Welcome, Sign in to your account
+</h1>
+<form id="form-inputs" action="/users/create-session" method="POST">
+  <label id="field-labels"> UserName </label>
+  <input id="form-inputs-values" type="email" name="email" placeholder="" required>
+  <label id="field-labels"> Password </label>
+  <input id="form-inputs-values" type="password" name="password" placeholder="" required>
+  <input id="form-submit-btn" type="submit" class="submit" value="Log In">
+  <p id="are-you-new-p">Are you new ?</p>
+  <button id="new-account-btn"> <a id="create-account-link" href="/users/sign-up">Crete an account</a></button>
 </form>
-
-
-
 <button id="search-button">
   <svg xmlns="http://www.w3.org/2000/svg" id="search-icon" class="search-icon" viewBox="0 0 488 512">
-      <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>
+    <path
+      d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
   </svg>
   <a id="create-account-link-google" href="/users/auth/google">Continue with Google </a>
 </button>
-
-
-
-
